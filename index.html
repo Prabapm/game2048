@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048 DevOps Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game">
+    <header>
+      <div>
+        <h1>2048</h1>
+        <p>Join the tiles. Reach 2048!</p>
+      </div>
+      <div class="score-box">
+        <span> SCORE </span>
+        <strong id="score">0</strong>
+      </div>
+    </header>
+
+    <div class="toolbar">
+      <p>Use your arrow keys to play</p>
+      <button id="restart">New Game</button>
+    </div>
+
+    <div id="board" class="board" role="grid"
+         aria-label="2048 game board"></div>
+    <p id="message" role="status" aria-live="polite"></p>
+    <p class="footer">Containerized with Docker</p>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>

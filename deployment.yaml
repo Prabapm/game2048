@@ -1,0 +1,42 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game2048
+  labels:
+    app: game2048
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: game2048
+  template:
+    metadata:
+      labels:
+        app: game2048
+    spec:
+      containers:
+        - name: game2048
+          image: 2048-devops:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi

@@ -1,0 +1,15 @@
+
+        - name: nginx-exporter
+          image: nginx/nginx-prometheus-exporter:1.4.2
+          args:
+            - --nginx.scrape-uri=http://127.0.0.1/stub_status
+          ports:
+            - name: metrics
+              containerPort: 9113
+          resources:
+            requests:
+              cpu: 20m
+              memory: 24Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
